@@ -52,31 +52,16 @@ void mergeSort(int *array, int low, int high)
     while (li < ls && ri < rs)
     {
         if (left[li] <= right[ri])
-        {
-            array[ai] = left[li];
-            li++;
-        }
+            array[ai++] = left[li++];
         else
-        {
-            array[ai] = right[ri];
-            ri++;
-        }
-        ai++;
+            array[ai++] = right[ri++];
     }
 
     while (li < ls)
-    {
-        array[ai] = left[li];
-        li++;
-        ai++;
-    }
+        array[ai++] = left[li++];
 
     while (ri < rs)
-    {
-        array[ai] = right[ri];
-        ri++;
-        ai++;
-    }
+        array[ai++] = right[ri++];
 }
 
 /*
