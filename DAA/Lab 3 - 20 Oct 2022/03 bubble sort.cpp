@@ -1,6 +1,7 @@
 // Write a program to implement bubble sort.
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int *input(int &);
@@ -37,13 +38,9 @@ void display(int *a, int b, int s, string text)
 void bubbleSort(int *a, int s)
 {
     for (int i = 0; i < s; i++)
-        for (int i = 1; i < s; i++)
-            if (a[i] < a[i - 1])
-            {
-                int temp = a[i];
-                a[i] = a[i - 1];
-                a[i - 1] = temp;
-            }
+        for (int j = 1; j < s; j++)
+            if (a[j] < a[j - 1])
+                swap(a[j], a[j - 1]);
 }
 
 /*

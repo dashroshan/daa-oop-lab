@@ -11,7 +11,7 @@ int main()
     string s1, s2;
     cout << "Enter 1st string: ";
     cin >> s1;
-    cout << "Enter 1st string: ";
+    cout << "Enter 2nd string: ";
     cin >> s2;
     printf("Length of LCS is %d\n", lcs(s1, s2));
     return 0;
