@@ -92,7 +92,7 @@ void calcFreq(string str, int n)
         freq[str[i]]++;
 }
 
-// function iterates through the encoded string s
+// function iterates through the e string s
 // if s[i]=='1' then move to node->right
 // if s[i]=='0' then move to node->left
 // if leaf node append the node->data to our output string
@@ -124,18 +124,18 @@ int main()
     string str;
     cout << "Enter string: ";
     cin >> str;
-    string encodedString, decodedString;
+    string e, d;
     calcFreq(str, str.length());
     HuffmanCodes(str.length());
-    cout << "Character With their Frequencies: ";
+    cout << "Characters: ";
     for (auto v = codes.begin(); v != codes.end(); v++)
         cout << v->first << ":" << v->second << " ";
 
     for (auto i : str)
-        encodedString += codes[i];
+        e += codes[i];
 
-    cout << "\nEncoded Huffman data: " << encodedString;
-    decodedString = decode_file(minHeap.top(), encodedString);
-    cout << "\nDecoded Huffman Data: " << decodedString;
+    cout << "\nEncoded Huffman data: " << e;
+    d = decode_file(minHeap.top(), e);
+    cout << "\nDecoded Huffman Data: " << d;
     return 0;
 }
