@@ -1,22 +1,27 @@
-// Write a program to find the GCD (Greatest Common Divisor) of given numbers using recursion.
+// Find GCD of 2 numbers using Euclidean algorithm
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-int hcf(int n1,int n2){
-    if(n2!=0) return hcf(n2,n1%n2);
-    return n1;
-}
+int gcd(int, int);
 
 int main()
 {
-    int n1,n2;
-    printf("Enter 2 numbers: ");
-    scanf("%d %d",&n1,&n2);
-    printf("HCF: %d",hcf(n1,n2));
+    int a, b;
+    cout << "Enter 2 numbers: ";
+    cin >> a >> b;
+    cout << "GCD of the entered numbers: " << gcd(a, b);
     return 0;
 }
 
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return b;
+    return gcd(b % a, a);
+}
+
 /*
-Enter 2 numbers: 24 36
-HCF: 12
+Enter 2 numbers: 18 24
+GCD of the entered numbers: 6
 */
