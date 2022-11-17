@@ -5,37 +5,41 @@
 using namespace std;
 
 int *input(int);
-int knapSack(int, int [], int [], int );
+int knapSack(int, int[], int[], int);
 
 int main()
 {
     int n, maxWt;
     cout << "Enter total weights and max capacity: ";
-    cin>>n>>maxWt;
+    cin >> n >> maxWt;
     cout << "Enter weights: ";
-    int *weight=input(n);
+    int *weight = input(n);
     cout << "Enter values: ";
-    int *value=input(n);
-    cout << "Max possible total value: "<<knapSack(maxWt, weight, value, n);
+    int *value = input(n);
+    cout << "Max possible total value: " << knapSack(maxWt, weight, value, n);
     return 0;
 }
 
 int *input(int s)
 {
-    int *a=new int[s];
-    for(int i=0; i<s; i++) cin>>a[i];
+    int *a = new int[s];
+    for (int i = 0; i < s; i++)
+        cin >> a[i];
     return a;
 }
 
 int knapSack(int W, int wt[], int val[], int n)
 {
-    int i, w, K[n+1][W+1];
-    for(i = 0; i <= n; i++)
-        for(w = 0; w <= W; w++)
+    int i, j, K[n + 1][W + 1];
+    for (i = 0; i <= n; i++)
+        for (j = 0; j <= W; j++)
         {
-            if (i == 0 || w == 0) K[i][w] = 0;
-            else if (wt[i - 1] <= w) K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
-            else K[i][w] = K[i - 1][w];
+            if (i == 0 || j == 0)
+                K[i][j] = 0;
+            else if (wt[i - 1] <= j)
+                K[i][j] = max(val[i - 1] + K[i - 1][j - wt[i - 1]], K[i - 1][j]);
+            else
+                K[i][j] = K[i - 1][j];
         }
     return K[n][W];
 }
