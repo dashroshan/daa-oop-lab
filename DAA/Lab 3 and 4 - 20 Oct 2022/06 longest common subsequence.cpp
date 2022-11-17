@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-int lcs(string, string);
+void lcs(string, string);
 
 int main()
 {
@@ -13,11 +13,11 @@ int main()
     cin >> s1;
     cout << "Enter 2nd string: ";
     cin >> s2;
-    printf("Length of LCS is %d\n", lcs(s1, s2));
+    lcs(s1, s2);
     return 0;
 }
 
-int lcs(string X, string Y)
+void lcs(string X, string Y)
 {
     int m = X.length(), n = Y.length(), L[m + 1][n + 1], i, j;
     for (i = 0; i <= m; i++)
@@ -30,11 +30,43 @@ int lcs(string X, string Y)
             else
                 L[i][j] = max(L[i - 1][j], L[i][j - 1]);
         }
-    return L[m][n];
+
+    int index = L[m][n];
+
+    // Create a character array to store the lcs string
+    char lcs[index + 1];
+    lcs[index] = '\0'; // Set the terminating character
+
+    // Start from the right-most-bottom-most corner and
+    // one by one store characters in lcs[]
+    i = m;
+    j = n;
+    while (i > 0 && j > 0)
+    {
+        // If current character in X[] and Y are same, then
+        // current character is part of LCS
+        if (X[i - 1] == Y[j - 1])
+        {
+            lcs[index - 1] = X[i - 1]; // Put current character in result
+            i--;
+            j--;
+            index--; // reduce values of i, j and index
+        }
+
+        // If not same, then find the larger of two and
+        // go in the direction of larger value
+        else if (L[i - 1][j] > L[i][j - 1])
+            i--;
+        else
+            j--;
+    }
+
+    // Print the lcs
+    cout << "LCS of " << X << " and " << Y << " is " << lcs;
 }
 
 /*
 Enter 1st string: stone
-Enter 1st string: longest
-Length of LCS is 3
+Enter 2nd string: longest
+LCS of stone and longest is one
 */
