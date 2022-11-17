@@ -47,13 +47,13 @@ void quickSort(int *array, int low, int high)
     if (low >= high)
         return;
     int i = low, j = high, pivot = array[low];
-    while (j > i)
+    while (i < j)
     {
         while ((pivot >= array[i]) && i <= high)
             i++;
         while ((pivot < array[j]) && j >= low)
             j--;
-        if (j > i)
+        if (i < j)
             swap(array[i], array[j]);
     }
     swap(array[j], array[low]);

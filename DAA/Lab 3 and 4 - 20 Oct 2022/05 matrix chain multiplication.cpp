@@ -4,16 +4,6 @@
 #include <algorithm>
 using namespace std;
 
-int *input(int &);
-int MatrixChain(int[], int, int);
-
-int main()
-{
-    int n, *arr = input(n);
-    cout << "Minimum number of multiplications: " << MatrixChain(arr, 1, n - 1);
-    return 0;
-}
-
 int *input(int &size)
 {
     cout << "Total matrices: ";
@@ -26,21 +16,60 @@ int *input(int &size)
     return arr;
 }
 
-int MatrixChain(int p[], int i, int j)
+void printParenthesis(int i, int j, int n, int *bracket, char &name)
 {
     if (i == j)
-        return 0;
-    int k, count, mini = INT_MAX;
-    for (k = i; k < j; k++)
     {
-        count = MatrixChain(p, i, k) + MatrixChain(p, k + 1, j) + p[i - 1] * p[k] * p[j];
-        mini = min(count, mini);
+        cout << name++;
+        return;
     }
-    return mini;
+    cout << "(";
+    printParenthesis(i, *((bracket + i * n) + j), n, bracket, name);
+    printParenthesis(*((bracket + i * n) + j) + 1, j, n, bracket, name);
+    cout << ")";
+}
+
+void matrixChainOrder(int p[], int n)
+{
+    int m[n][n];
+    int bracket[n][n];
+    for (int i = 1; i < n; i++)
+        m[i][i] = 0;
+
+    for (int L = 2; L < n; L++)
+    {
+        for (int i = 1; i < n - L + 1; i++)
+        {
+            int j = i + L - 1;
+            m[i][j] = INT_MAX;
+            for (int k = i; k <= j - 1; k++)
+            {
+                int q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                if (q < m[i][j])
+                {
+                    m[i][j] = q;
+                    bracket[i][j] = k;
+                }
+            }
+        }
+    }
+    char name = 'A';
+
+    cout << "Optimal Parenthesization is : ";
+    printParenthesis(1, n - 1, n, (int *)bracket, name);
+    cout << "\nOptimal Cost is : " << m[1][n - 1];
+}
+
+int main()
+{
+    int n, *arr = input(n);
+    matrixChainOrder(arr, n);
+    return 0;
 }
 
 /*
 Total matrices: 3
 Enter 4 dimensions (skip consecutive matrix dimension i.e. A2,3 x A3,4 as 2 3 4): 2 3 4 2
-Minimum number of multiplications: 36
+Optimal Parenthesization is : (A(BC))
+Optimal Cost is : 36
 */
