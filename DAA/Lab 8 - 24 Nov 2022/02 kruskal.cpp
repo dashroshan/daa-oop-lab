@@ -115,3 +115,15 @@ Edge    Weight
 
 Weight of MST is 16
 */
+
+// O(ElogV)
+
+/*
+Create an empty set A
+Make individual sets of all vertices e.g. (A),(B),(C)...
+for((u,v) : edges in increasing order by weight)
+    if(set containing u != set containing v)
+        A = A union {(u,v)}
+        Make union of both sets containing u and v
+return A which contain the edges of MST
+*/

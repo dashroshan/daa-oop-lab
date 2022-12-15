@@ -129,3 +129,32 @@ Edge    Weight
 
 Weight of MST is 16
 */
+
+// O(ElogV)
+
+/*
+Create an empty set S to store finalized vertices.
+Initialize source vertex to 0 and rest of vertices to infinity.
+Create a priority queue Q=vertices of graph.
+while(Q!=empty)
+    u=extractMin(Q)
+    S=S union u
+    for(v : all adjacent vertices of u)
+        if(edge(u,v) < v)
+            v = edge(u,v)
+for(v : all vertices)
+    Pick the edge with weight v
+*/
+
+/*
+Create an empty set S to store finalized vertices.
+Initialize source vertex to 0 and rest of vertices to infinity.
+while(S doesnot include all the vertices)
+    u=minimum key vertex not included in S
+    S=S union u
+    for(v : all adjacent vertices of u)
+        if(edge(u,v) < v)
+            v = edge(u,v)
+for(v : all vertices)
+    Pick the edge with weight v
+*/

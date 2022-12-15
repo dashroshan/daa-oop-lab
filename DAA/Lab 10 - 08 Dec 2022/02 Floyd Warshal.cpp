@@ -1,4 +1,4 @@
-// Write a program to implement Floyd’s algorithm for the all pairs shortest path problem.
+// Write a program to implement Floydï¿½s algorithm for the all pairs shortest path problem.
 
 #include <iostream>
 using namespace std;
@@ -18,13 +18,14 @@ int main()
 int **input(int *v)
 {
     cout << "Enter total vertices: ";
-    cin>>*v;
-    cout<<"Enter the adjacency matrix (0 for i to i, -1 for infinity):\n";
-    int **matrix = new int*[*v], i, j;
+    cin >> *v;
+    cout << "Enter the adjacency matrix (0 for i to i, -1 for infinity):\n";
+    int **matrix = new int *[*v], i, j;
     for (i = 0; i < *v; i++)
     {
-        matrix[i]=new int[*v];
-        for (j = 0; j < *v; j++) cin>>matrix[i][j];
+        matrix[i] = new int[*v];
+        for (j = 0; j < *v; j++)
+            cin >> matrix[i][j];
     }
     return matrix;
 }
@@ -32,17 +33,18 @@ int **input(int *v)
 void display(int **g, int v)
 {
     int i, j;
-    cout<<"\nAll pairs shortest path matrix:\n";
+    cout << "\nAll pairs shortest path matrix:\n";
     for (i = 0; i < v; i++)
     {
-        for (j = 0; j < v; j++) cout<< g[i][j]<<" ";
-        cout<<endl;
+        for (j = 0; j < v; j++)
+            cout << g[i][j] << " ";
+        cout << endl;
     }
 }
 
 void floydWarshall(int **g, int v)
 {
-    int i,j,k;
+    int i, j, k;
     for (k = 0; k < v; k++)
     {
         for (i = 0; i < v; i++)
@@ -77,4 +79,13 @@ All pairs shortest path matrix:
 5 0 2 3
 3 6 0 1
 2 5 7 0
+*/
+
+// O(v^3)
+
+/*
+for(k=0 to v-1)
+for(i=0 to v-1)
+for(j=0 to v-1)
+Gij = min(Gij, Gik + Gkj)
 */
