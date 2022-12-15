@@ -72,3 +72,9 @@ int main()
 Enter string: abcbd
 Longest palindrome: bcb
 */
+
+// O(N^2) where N=string length
+
+/*
+longest palindrome = lcs(string, reverse(string))
+*/

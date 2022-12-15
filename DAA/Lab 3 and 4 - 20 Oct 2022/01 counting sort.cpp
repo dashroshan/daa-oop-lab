@@ -61,3 +61,13 @@ Enter array size: 5
 Enter array elements: 1 4 2 5 3
 Sorted array: 1 2 3 4 5
 */
+
+/*
+Create a new array C of length maxElemement, and B of length totalElements
+Store occurance of all elements in C
+Do cumulative sum of C
+for(i=totalElements to 1)
+    B[C[A[i]]] = A[i]
+    C[A[i]] -= 1
+return B
+*/

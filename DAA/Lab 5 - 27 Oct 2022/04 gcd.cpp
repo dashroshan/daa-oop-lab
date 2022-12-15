@@ -21,6 +21,8 @@ int gcd(int a, int b)
     return gcd(b % a, a);
 }
 
+// O(log(min(a,b)))
+
 /*
 Enter 2 numbers: 18 24
 GCD of the entered numbers: 6

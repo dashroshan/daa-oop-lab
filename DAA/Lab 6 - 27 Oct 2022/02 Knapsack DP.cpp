@@ -50,3 +50,15 @@ Enter weights: 1 2 3 4 5
 Enter values: 4 1 2 3 7
 Max possible total value: 14
 */
+
+// O(n*W)
+
+/*
+Create K[n+1][W+1]
+for(i=0 to n)
+for(j=0 to W)
+    if(i=0 or j=0) K[i][j]=0
+    else if(wt[i-1]<=j) K[i][j]=max(val[i-1] + K[i-1][j-wt[i-1]], K[i-1][j])
+    else K[i][j]=K[i-1][j]
+maxProfit = K[n][W]
+*/

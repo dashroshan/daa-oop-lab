@@ -5,8 +5,9 @@
 using namespace std;
 
 int *input(int &);
-void buildHeap(int *, int, bool);
-void heapify(int *, int, int, bool);
+void buildHeap(int *, int, bool);    // O(logn)
+void heapify(int *, int, int, bool); // O(n)
+// HeapSort is O(nlogn)
 void display(int *, int, int, string);
 
 int main()
