@@ -75,12 +75,10 @@ Vertex: Distance from source
 // O(ElogV)
 
 /*
-Create an empty set S to store finalized vertices.
 Initialize source vertex to 0 and rest of vertices to infinity.
 Create a priority queue Q=vertices of graph.
 while(Q!=empty)
     u=extractMin(Q)
-    S=S union u
     for(v : all adjacent vertices of u)
         if(u + edge(u,v) < v)
             v = u + edge(u,v)
